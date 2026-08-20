@@ -12,7 +12,7 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
-        visualizer({ open: true, filename: 'bundle-analysis.html' }),
+        visualizer({ open: false, filename: 'bundle-analysis.html' }),
     ],
     resolve: {
         alias: {
