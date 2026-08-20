@@ -95,7 +95,7 @@ export function Header() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              <Button className="rounded-full px-6 py-5 font-semibold text-sm transition-transform hover:scale-105 active:scale-95 duration-300 cursor-pointer">
+              <Button className="rounded-full px-6 py-3 font-semibold text-sm transition-transform hover:scale-105 active:scale-95 duration-300 cursor-pointer">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 FALE CONOSCO
               </Button>
