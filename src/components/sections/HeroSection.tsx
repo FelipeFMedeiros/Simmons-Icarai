@@ -72,8 +72,8 @@ export function HeroSection() {
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
     return (
-        <section className="w-full bg-background pt-4 pb-8 px-4 md:px-6 lg:px-8">
-            <div className="relative w-full max-w-[1920px] mx-auto aspect-941/1672 md:aspect-1920/555 rounded-2xl md:rounded-4xl overflow-hidden shadow-2xl">
+        <section className="w-full bg-background md:pt-4 md:pb-8 md:px-6 lg:px-8">
+            <div className="relative w-full max-w-[1920px] mx-auto aspect-941/1672 md:aspect-1920/555 md:rounded-4xl overflow-hidden md:shadow-2xl">
                 <div ref={emblaRef} className="w-full h-full overflow-hidden">
                     <div className="flex h-full" style={{ touchAction: 'pan-y pinch-zoom' }}>
                         {slides.map(({ desktop, mobile }, index) => {

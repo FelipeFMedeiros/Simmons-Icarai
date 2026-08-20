@@ -131,7 +131,7 @@ export function BestSellers() {
                 <Button
                   variant="ghost"
                   onClick={() => handleWhatsAppClick(product.name)}
-                  className="group/btn w-full mt-6 h-12 bg-white text-stone-900 border-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors duration-300 font-medium no-default-hover-elevate no-default-active-elevate"
+                  className="group/btn w-full mt-6 h-12 bg-white text-stone-900 border-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors duration-300 font-medium no-default-hover-elevate no-default-active-elevate hover:cursor-pointer"
                 >
                   <FaWhatsapp className="w-5 h-5 text-[#25D366] transition-colors duration-300 group-hover/btn:text-white" />
                   <span>Quero saber mais</span>

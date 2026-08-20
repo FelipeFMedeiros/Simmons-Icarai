@@ -7,6 +7,8 @@ import { BestSellers } from '@/components/sections/BestSellers';
 import { ValueProps } from '@/components/sections/ValueProps';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { StoreLocation } from '@/components/sections/StoreLocation';
+import { GoogleReviews } from '@/components/sections/GoogleReviews';
+import { HotelLine } from '@/components/sections/HotelLine';
 import { TrustFooterBanner } from '@/components/sections/TrustFooterBanner';
 import { Footer } from '@/components/sections/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -22,7 +24,9 @@ export default function Home() {
         <BestSellers />
         <ValueProps />
         <AboutSection />
+        <HotelLine />
         <StoreLocation />
+        <GoogleReviews />
       </main>
       <TrustFooterBanner />
       <Footer />

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { ShieldCheck, Globe, Cpu, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
+import useEmblaCarousel from 'embla-carousel-react';
+import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -26,10 +28,25 @@ const features = [
 ];
 
 export function FeaturesBanner() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+      if (!emblaApi) return;
+      setCount(emblaApi.scrollSnapList().length);
+      setCurrent(emblaApi.selectedScrollSnap());
+      emblaApi.on('select', () => setCurrent(emblaApi.selectedScrollSnap()));
+  }, [emblaApi]);
+
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+
   return (
-    <section className="w-full border-y border-border bg-white py-12">
+    <section className="w-full border-y border-border bg-white py-12 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 divide-y md:divide-y-0 md:divide-x divide-border">
+        
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 md:divide-x divide-border">
           {features.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -54,6 +71,48 @@ export function FeaturesBanner() {
             );
           })}
         </div>
+
+        {/* Mobile Carousel */}
+        <div className="md:hidden -mx-4 relative">
+          <div ref={emblaRef} className="overflow-hidden px-4">
+            <div className="flex touch-pan-y">
+              {features.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div key={index} className="flex-[0_0_80%] min-w-0 px-4">
+                    <div className="flex flex-col items-center text-center h-full pt-4">
+                      <div className="mb-4 text-primary">
+                        <Icon className="w-8 h-8 stroke-[1.5]" />
+                      </div>
+                      <h3 className="text-lg font-serif font-semibold text-foreground mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          
+          <div className="mt-8 flex justify-center gap-2">
+              {Array.from({ length: count }).map((_, index) => (
+                  <button
+                      key={index}
+                      type="button"
+                      onClick={() => scrollTo(index)}
+                      aria-label={`Ir para item ${index + 1}`}
+                      className={cn(
+                          'h-1.5 rounded-full transition-all duration-300',
+                          current === index ? 'w-6 bg-primary' : 'w-1.5 bg-primary/30',
+                      )}
+                  />
+              ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

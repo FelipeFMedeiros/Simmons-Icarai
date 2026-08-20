@@ -2,24 +2,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import imgLinnus from '@/assets/bedroom-linnus.jpg';
-import imgBamboo from '@/assets/bedroom-bamboo.jpg';
-import imgHospitality from '@/assets/bedroom-hospitality.jpg';
+import imageBothanical from '@/assets/CollectionCards/bothanical.webp'
+import imageHeritage from '@/assets/CollectionCards/heritage.webp'
+import imageMadison from '@/assets/CollectionCards/madison.webp'
+
 
 const collections = [
   {
-    image: imgLinnus,
-    title: 'Linnus Black',
+    image: imageBothanical,
+    title: 'Bothanical',
     desc: 'Design sofisticado e suporte excepcional para seu sono profundo.',
   },
   {
-    image: imgBamboo,
-    title: 'Bamboo Botanical',
+    image: imageHeritage,
+    title: 'Heritage',
     desc: 'Tecnologia sustentável que oferece frescor e bem-estar todas as noites.',
   },
   {
-    image: imgHospitality,
-    title: 'New Hospitality',
+    image: imageMadison,
+    title: 'Madison',
     desc: 'Conforto de hotel 5 estrelas para transformar seu descanso.',
   },
 ];
@@ -60,7 +61,7 @@ export function CollectionCards() {
               <div className="p-8 flex flex-col grow">
                 <h3 className="text-2xl font-serif text-foreground mb-3">{item.title}</h3>
                 <p className="text-muted-foreground mb-8 grow">{item.desc}</p>
-                <Button variant="outline" className="w-full justify-center group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors duration-300">
+                <Button variant="outline" className="w-full justify-center group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors duration-300 hover:cursor-pointer">
                   QUERO SABER MAIS
                   <MessageCircle className="w-4 h-4 ml-2" />
                 </Button>
