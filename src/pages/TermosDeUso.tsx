@@ -233,17 +233,11 @@ export default function TermosDeUso() {
                                     <strong>Inscrição Municipal:</strong> 87185605
                                 </li>
                                 <li>
-                                    <strong>Responsável:</strong> Lucimeire de Souza Rangel (CPF: 088.123.407-92)
-                                </li>
-                                <li>
                                     <strong>Endereço:</strong> R Dr. Tavares de Macedo, 71, Icaraí, Niterói - CEP:
                                     24.220-215
                                 </li>
                                 <li>
                                     <strong>Email:</strong> icarai@gruposimmons.com
-                                </li>
-                                <li>
-                                    <strong>Telefone:</strong> 21 98555-6378
                                 </li>
                                 <li>
                                     <strong>WhatsApp Business:</strong> 21 97703-0033

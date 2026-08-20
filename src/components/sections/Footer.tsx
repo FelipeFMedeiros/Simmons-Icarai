@@ -1,83 +1,221 @@
 import React from 'react';
+import { Link } from 'wouter';
 import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 
+const WHATSAPP_URL =
+    'https://api.whatsapp.com/send/?phone=5521977030033&text=Ol%C3%A1%2C+vi+seu+site%21+Quero+saber+mais+sobre+a+Simmons.&type=phone_number&app_absent=0';
+
 export function Footer() {
-  return (
-    <footer className="w-full bg-background pt-16 pb-8">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
-          
-          {/* Brand Col */}
-          <div className="lg:col-span-2">
-            <div className="font-serif text-2xl font-bold tracking-tight text-primary mb-4">
-              SIMMONS<span className="text-foreground text-sm tracking-normal font-sans font-medium ml-2">NITERÓI</span>
+    const currentYear = new Date().getFullYear();
+
+    return (
+        <footer className="w-full bg-background border-t border-border/60">
+            <div className="container mx-auto px-4 py-14 lg:px-8 lg:py-16">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+                    {/* Marca */}
+                    <div className="lg:col-span-4">
+                        <Link href="/" className="inline-block">
+                            <div className="mb-4 font-serif text-2xl font-bold tracking-tight text-primary">
+                                SIMMONS
+                                <span className="ml-2 font-sans text-sm font-medium tracking-normal text-foreground">
+                                    NITERÓI
+                                </span>
+                            </div>
+                        </Link>
+
+                        <p className="mb-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                            Excelência em conforto para noites de sono incomparáveis. Encontre o colchão ideal para você
+                            em nossa loja em Icaraí, Niterói.
+                        </p>
+
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="https://www.instagram.com/grupoicarai.simmons"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram Simmons Niterói"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                            >
+                                <FaInstagram className="h-5 w-5" />
+                            </a>
+
+                            <a
+                                href="https://www.facebook.com/colchoessimmonsicarai"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Facebook Simmons Niterói"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                            >
+                                <FaFacebook className="h-5 w-5" />
+                            </a>
+
+                            <a
+                                href={WHATSAPP_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="WhatsApp Simmons Niterói"
+                                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                            >
+                                <FaWhatsapp className="h-5 w-5" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Loja */}
+                    <div className="lg:col-span-2">
+                        <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-foreground">Loja</h4>
+
+                        <ul className="space-y-3">
+                            <li>
+                                <Link
+                                    href="/loja"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Todos os produtos
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja?categoria=colchoes"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Colchões
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja?categoria=travesseiros"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Travesseiros
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja?categoria=protetores"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Protetores de colchão
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Institucional */}
+                    <div className="lg:col-span-2">
+                        <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-foreground">
+                            Institucional
+                        </h4>
+
+                        <ul className="space-y-3">
+                            <li>
+                                <Link
+                                    href="/loja-fisica"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Nossa loja
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja-fisica"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Como chegar
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja-fisica"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Horário de atendimento
+                                </Link>
+                            </li>
+
+                            <li>
+                                <a
+                                    href={WHATSAPP_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Fale conosco
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Contato */}
+                    <div className="lg:col-span-4">
+                        <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-foreground">
+                            Visite a Simmons Niterói
+                        </h4>
+
+                        <div className="space-y-4 text-sm text-muted-foreground">
+                            <address className="not-italic leading-relaxed">
+                                R. Dr. Tavares de Macedo, 71
+                                <br />
+                                Icaraí, Niterói - RJ
+                                <br />
+                                CEP 24.220-215
+                            </address>
+
+                            <div className="space-y-2">
+                                <p>
+                                    <a
+                                        href={WHATSAPP_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="transition-colors hover:text-primary"
+                                    >
+                                        (21) 97703-0033
+                                    </a>
+                                </p>
+
+                                <p>
+                                    <a
+                                        href="mailto:icarai@gruposimmons.com"
+                                        className="transition-colors hover:text-primary"
+                                    >
+                                        icarai@gruposimmons.com
+                                    </a>
+                                </p>
+                            </div>
+
+                            <p className="pt-1 text-xs">CNPJ: 25.264.327/0001-00</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom */}
+                <div className="mt-12 flex flex-col gap-5 border-t border-border pt-7 md:flex-row md:items-center md:justify-between">
+                    <p className="text-xs text-muted-foreground">
+                        © {currentYear} Simmons Niterói. Todos os direitos reservados.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                        <Link
+                            href="/politica-de-privacidade"
+                            className="text-xs text-muted-foreground transition-colors hover:text-primary"
+                        >
+                            Política de Privacidade
+                        </Link>
+
+                        <Link
+                            href="/termos-de-uso"
+                            className="text-xs text-muted-foreground transition-colors hover:text-primary"
+                        >
+                            Termos de Uso
+                        </Link>
+                    </div>
+                </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-6 max-w-sm">
-              Excelência em conforto para noites de sono incomparáveis.
-            </p>
-            <div className="flex items-center gap-4">
-              <a href="https://www.instagram.com/grupoicarai.simmons" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
-                <FaInstagram className="w-5 h-5" />
-              </a>
-              <a href="https://www.facebook.com/colchoessimmonsicarai" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
-                <FaFacebook className="w-5 h-5" />
-              </a>
-              <a href="https://api.whatsapp.com/send/?phone=5521977030033" className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
-                <FaWhatsapp className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Links Cols */}
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Colchões</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Todos os Colchões</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Linha Black</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Bamboo Botanical</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">New Hospitality</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Acessórios</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Travesseiros</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Protetores</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Roupa de Cama</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Sobre a Simmons</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Nossa História</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Tecnologia</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Sustentabilidade</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">Loja Física</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Como Chegar</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Estacionamento</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Horário de Funcionamento</a></li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © 2026 Simmons do Brasil. Todos os direitos reservados.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="/politica-de-privacidade" className="text-xs text-muted-foreground hover:text-primary transition-colors">Política de Privacidade</a>
-            <a href="/termos-de-uso" className="text-xs text-muted-foreground hover:text-primary transition-colors">Termos de Uso</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+        </footer>
+    );
 }

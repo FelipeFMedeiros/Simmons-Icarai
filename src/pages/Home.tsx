@@ -14,23 +14,35 @@ import { Footer } from '@/components/sections/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="grow">
-        <HeroSection />
-        <FeaturesBanner />
-        <CollectionCards />
-        <BestSellers />
-        <ValueProps />
-        <AboutSection />
-        <HotelLine />
-        <StoreLocation />
-        <GoogleReviews />
-      </main>
-      <TrustFooterBanner />
-      <Footer />
-      <WhatsAppButton />
-    </div>
-  );
+    return (
+        <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="grow">
+                <div id="inicio">
+                    <HeroSection />
+                    <FeaturesBanner />
+                </div>
+                <div id="colchoes">
+                <CollectionCards />
+                </div>
+                <div id="mais-vendidos">
+                <BestSellers />
+                </div>
+                <ValueProps />
+                <div id="hotel">
+                <HotelLine />
+                </div>
+                <div id="sobre">
+                <AboutSection />
+                </div>
+                <div id="atendimento">
+                <StoreLocation />
+                </div>
+                <GoogleReviews />
+            </main>
+            <TrustFooterBanner />
+            <Footer />
+            <WhatsAppButton />
+        </div>
+    );
 }

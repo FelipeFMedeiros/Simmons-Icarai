@@ -78,7 +78,7 @@ export function BestSellers() {
   };
 
   return (
-    <section className="w-full py-24 bg-white border-y border-border" id="mais-vendidos">
+    <section className="w-full py-24 bg-white border-y border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="mb-16 text-center">
           <span className="text-sm font-semibold tracking-widest text-primary uppercase mb-3 block">

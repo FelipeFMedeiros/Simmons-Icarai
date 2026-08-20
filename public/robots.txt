@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Allow: /loja-fisica
-Allow: /colchoes
-Allow: /acessorios
+Allow: /loja
 Allow: /politica-de-privacidade
 Allow: /termos-de-uso

@@ -16,7 +16,7 @@ export function StoreLocation() {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
 
   return (
-    <section className="w-full bg-white py-0 border-y border-border flex flex-col" id="atendimento">
+    <section className="w-full bg-white py-0 border-y border-border flex flex-col">
       <div className="grid lg:grid-cols-2">
         
         <motion.div
