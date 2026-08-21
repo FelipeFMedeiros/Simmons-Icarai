@@ -143,7 +143,7 @@ export function BestSellers() {
 
         <div className="mt-14 flex justify-center">
           <a
-            href="#colchoes"
+            href="/loja"
             className="group inline-flex items-center gap-2.5 px-8 py-3 rounded-full border border-stone-900 text-sm font-semibold uppercase tracking-wide text-stone-900 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-colors duration-300"
           >
             Ver mais colchões

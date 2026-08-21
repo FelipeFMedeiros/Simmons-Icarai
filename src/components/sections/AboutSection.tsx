@@ -56,9 +56,14 @@ export function AboutSection() {
               </p>
             </div>
             {/* Botão CTA com texto chamativo */}
-            <Button className="px-8 py-6 rounded-full font-semibold shadow-md transition-transform hover:scale-105 duration-300 hover:cursor-pointer">
-              QUERO CONVERSAR COM UM CONSULTOR
-            </Button>
+            <a 
+                href="https://api.whatsapp.com/send/?phone=5521977030033" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold shadow-md transition-all hover:scale-105 duration-300 bg-primary text-white hover:bg-primary/90"
+            >
+                QUERO CONVERSAR COM UM CONSULTOR
+            </a>
           </motion.div>
 
           <motion.div
