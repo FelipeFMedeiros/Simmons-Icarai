@@ -76,7 +76,7 @@ export default function Loja() {
                         <span className="font-serif text-2xl font-bold tracking-tight text-primary">
                             SIMMONS
                             <span className="text-foreground text-sm tracking-normal font-sans font-medium ml-2">
-                                NITERÓI
+                                ICARAÍ
                             </span>
                         </span>
                     </Link>

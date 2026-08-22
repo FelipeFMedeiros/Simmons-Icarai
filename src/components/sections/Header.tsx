@@ -62,7 +62,7 @@ export function Header() {
         <div className="container mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <span className="font-serif text-2xl font-bold tracking-tight text-primary">
-              SIMMONS<span className="text-foreground text-sm tracking-normal font-sans font-medium ml-2">NITERÓI</span>
+              SIMMONS<span className="text-foreground text-sm tracking-normal font-sans font-medium ml-2">ICARAÍ</span>
             </span>
           </Link>
 
@@ -121,7 +121,7 @@ export function Header() {
             <div className="flex h-20 shrink-0 items-center justify-between border-b border-border/40 px-4">
               <Link href="/" className="flex items-center gap-2">
                 <span className="font-serif text-2xl font-bold tracking-tight text-primary">
-                  SIMMONS<span className="text-foreground text-sm tracking-normal font-sans font-medium ml-2">NITERÓI</span>
+                  SIMMONS<span className="text-foreground text-sm tracking-normal font-sans font-medium ml-2">ICARAÍ</span>
                 </span>
               </Link>
               <button

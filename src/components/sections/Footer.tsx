@@ -18,7 +18,7 @@ export function Footer() {
                             <div className="mb-4 font-serif text-2xl font-bold tracking-tight text-primary">
                                 SIMMONS
                                 <span className="ml-2 font-sans text-sm font-medium tracking-normal text-foreground">
-                                    NITERÓI
+                                    ICARAÍ
                                 </span>
                             </div>
                         </Link>
@@ -33,7 +33,7 @@ export function Footer() {
                                 href="https://www.instagram.com/grupoicarai.simmons"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Instagram Simmons Niterói"
+                                aria-label="Instagram Simmons Icaraí"
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
                             >
                                 <FaInstagram className="h-5 w-5" />
@@ -43,7 +43,7 @@ export function Footer() {
                                 href="https://www.facebook.com/colchoessimmonsicarai"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="Facebook Simmons Niterói"
+                                aria-label="Facebook Simmons Icaraí"
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
                             >
                                 <FaFacebook className="h-5 w-5" />
@@ -53,7 +53,7 @@ export function Footer() {
                                 href={WHATSAPP_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label="WhatsApp Simmons Niterói"
+                                aria-label="WhatsApp Simmons Icaraí"
                                 className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
                             >
                                 <FaWhatsapp className="h-5 w-5" />
@@ -154,7 +154,7 @@ export function Footer() {
                     {/* Contato */}
                     <div className="lg:col-span-4">
                         <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-foreground">
-                            Visite a Simmons Niterói
+                            Visite a Simmons Icaraí
                         </h4>
 
                         <div className="space-y-4 text-sm text-muted-foreground">
@@ -196,7 +196,7 @@ export function Footer() {
                 {/* Bottom */}
                 <div className="mt-12 flex flex-col gap-5 border-t border-border pt-7 md:flex-row md:items-center md:justify-between">
                     <p className="text-xs text-muted-foreground">
-                        © {currentYear} Simmons Niterói. Todos os direitos reservados.
+                        © {currentYear} Simmons Icaraí. Todos os direitos reservados.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2">

@@ -28,7 +28,7 @@ export function StoreLocation() {
         >
           <img
             src={imgStore}
-            alt="Fachada Simmons Niterói"
+            alt="Fachada Simmons Icaraí"
             className="absolute inset-0 w-full h-full object-contain"
           />
         </motion.div>
