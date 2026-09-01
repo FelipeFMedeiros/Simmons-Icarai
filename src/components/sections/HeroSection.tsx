@@ -13,6 +13,7 @@ const autoplayPlugin = Autoplay({ delay: 5000, stopOnInteraction: false, stopOnM
 
 // Desktop images
 import hero from '@/assets/HeroSection/hero.webp';
+import heroPromo1 from '@/assets/HeroSection/hero-promo-1.webp';
 import hero2 from '@/assets/HeroSection/hero-2.webp';
 import hero3 from '@/assets/HeroSection/hero-3.webp';
 import hero4 from '@/assets/HeroSection/hero-4.webp';
@@ -21,6 +22,7 @@ import hero6 from '@/assets/HeroSection/hero-6.webp';
 
 // Mobile images
 import heroMobile from '@/assets/HeroSection/hero-mobile.webp';
+import heroMobilePromo1 from '@/assets/HeroSection/hero-mobile-promo-1.webp';
 import heroMobile2 from '@/assets/HeroSection/hero-mobile-2.webp';
 import heroMobile3 from '@/assets/HeroSection/hero-mobile-3.webp';
 import heroMobile4 from '@/assets/HeroSection/hero-mobile-4.webp';
@@ -28,6 +30,7 @@ import heroMobile5 from '@/assets/HeroSection/hero-mobile-5.webp';
 import heroMobile6 from '@/assets/HeroSection/hero-mobile-6.webp';
 
 const slides = [
+    { desktop: heroPromo1, mobile: heroMobilePromo1 },
     { desktop: hero, mobile: heroMobile }, 
     { desktop: hero2, mobile: heroMobile2 },
     { desktop: hero3, mobile: heroMobile3 },

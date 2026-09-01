@@ -44,10 +44,10 @@ export function GoogleReviews() {
                         href='https://api.whatsapp.com/send/?phone=5521977030033'
                         target="_blank"
                         rel="noreferrer"
-                        className="group relative overflow-hidden flex items-center gap-3 px-10 py-4 rounded-full border border-[#25D366] text-foreground font-semibold text-sm uppercase tracking-widest"
+                        className="group relative overflow-hidden flex items-center gap-3 px-10 py-4 rounded-full border border-[#25D366] bg-[#25D366] text-white font-semibold text-sm uppercase tracking-widest shadow-lg shadow-[#25D366]/30 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#1DA851]/40"
                     >
-                        {/* Fill from center */}
-                        <span className="absolute inset-0 bg-[#25D366] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center" />
+                        {/* Fill from center, darker green on hover */}
+                        <span className="absolute inset-0 bg-[#1DA851] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center" />
                         {/* Content */}
                         <span className="relative z-10 flex items-center gap-3">
                             <FaWhatsapp className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
