@@ -47,7 +47,7 @@ const socials = [
 ];
 
 const MAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2974959144415!2d-43.1118182!3d-22.9023605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9981643c7b6059%3A0xc3b6e760c418b76c!2sR.%20Dr.%20Tavares%20de%20Macedo%2C%2071%20-%20Icara%C3%AD%2C%20Niter%C3%B3i%20-%20RJ%2C%2024220-215!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr';
-const MAPS_URL = 'https://www.google.com/maps/search/Rua+Dr.+Tavares+de+Macedo,+71+-+Icara%C3%AD,+Niter%C3%B3i';
+const MAPS_URL = 'https://maps.app.goo.gl/AUVd4GpNV5GopSrq7';
 
 export default function LojaFisica() {
     const [emblaRef, emblaApi] = useEmblaCarousel(

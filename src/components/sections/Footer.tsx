@@ -122,7 +122,7 @@ export function Footer() {
 
                             <li>
                                 <a
-                                    href="https://www.google.com/maps/search/Rua+Dr.+Tavares+de+Macedo,+71+-+Icara%C3%AD,+Niter%C3%B3i"
+                                    href="https://maps.app.goo.gl/AUVd4GpNV5GopSrq7"
                                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                                 >
                                     Como chegar
