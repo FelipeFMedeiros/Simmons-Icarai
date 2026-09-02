@@ -242,6 +242,9 @@ export default function TermosDeUso() {
                                 <li>
                                     <strong>WhatsApp Business:</strong> 21 97703-0033
                                 </li>
+                                <li>
+                                    <strong>Telefone Fixo:</strong> 21 2704-6396
+                                </li>
                             </ul>
                         </section>
 

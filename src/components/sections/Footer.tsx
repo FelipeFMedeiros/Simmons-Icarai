@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'wouter';
-import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 
 const WHATSAPP_URL =
     'https://api.whatsapp.com/send/?phone=5521977030033&text=Ol%C3%A1%2C+vi+seu+site%21+Quero+saber+mais+sobre+a+Simmons.&type=phone_number&app_absent=0';
@@ -166,17 +166,26 @@ export function Footer() {
                                 CEP 24.220-215
                             </address>
 
-                            <div className="space-y-2">
-                                <p>
+                            <div className="space-y-3">
+                                <div className="flex flex-col items-start gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-5">
                                     <a
                                         href={WHATSAPP_URL}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="transition-colors hover:text-primary"
+                                        className="inline-flex items-center gap-2 transition-colors hover:text-primary"
                                     >
-                                        (21) 97703-0033
+                                        <FaWhatsapp className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                                        <span>(21) 97703-0033</span>
                                     </a>
-                                </p>
+
+                                    <a
+                                        href="tel:2127046396"
+                                        className="inline-flex items-center gap-2 transition-colors hover:text-primary"
+                                    >
+                                        <FaPhoneAlt className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden="true" />
+                                        <span>(21) 2704-6396</span>
+                                    </a>
+                                </div>
 
                                 <p>
                                     <a
