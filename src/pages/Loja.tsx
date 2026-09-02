@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'wouter';
-import { ChevronRight, Home, ZoomIn, X } from 'lucide-react';
+import { ChevronRight, Home, Maximize2, X } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { mattresses } from '@/data/mattresses';
@@ -64,7 +64,7 @@ export default function Loja() {
 
     const handleWhatsAppClick = (productName: string) => {
         const text = encodeURIComponent(`Olá, vi o modelo *${productName}* no site e gostaria de mais informações!`);
-        window.open(`${WA_HREF}&text=${text}`, '_blank');
+        window.open(`${WA_HREF}&text=${text}`, '_blank', 'noopener,noreferrer');
     };
 
     return (
@@ -120,21 +120,36 @@ export default function Loja() {
             <main className="py-16 md:py-24 flex-1">
                 <div className="container mx-auto px-4 lg:px-8">
                     {/* Category Filter */}
-                    <div className="flex flex-wrap gap-3 justify-center mb-16">
+                    <div className="-mx-4 mb-10 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0">
                         {filterOptions.map((option) => (
                             <button
                                 key={option.value}
                                 onClick={() => setSelectedFilter(option.value)}
+                                aria-pressed={selectedFilter === option.value}
                                 className={cn(
-                                    'px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border cursor-pointer',
+                                    'shrink-0 cursor-pointer rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-300',
                                     selectedFilter === option.value
                                         ? 'bg-primary text-primary-foreground border-primary shadow-md'
-                                        : 'bg-transparent text-muted-foreground border-border hover:border-primary/50 hover:text-foreground',
+                                        : 'bg-white text-muted-foreground border-stone-200 hover:border-primary/40 hover:text-foreground hover:shadow-sm',
                                 )}
                             >
                                 {option.label}
                             </button>
                         ))}
+                    </div>
+
+                    <div className="mb-8 flex items-end justify-between border-b border-stone-200 pb-4">
+                        <div>
+                            <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                                Catálogo Simmons
+                            </span>
+                            <p className="font-serif text-2xl text-foreground">
+                                {filterOptions.find((option) => option.value === selectedFilter)?.label ?? 'Todos'}
+                            </p>
+                        </div>
+                        <span className="text-sm text-muted-foreground">
+                            {filteredProducts.length} {filteredProducts.length === 1 ? 'produto' : 'produtos'}
+                        </span>
                     </div>
 
                     {/* Products Grid */}
@@ -143,53 +158,66 @@ export default function Loja() {
                             Nenhum produto encontrado nesta categoria.
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                            {filteredProducts.map((product) => (
-                                <div
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                            {filteredProducts.map((product, index) => (
+                                <article
                                     key={product.id}
-                                    className="bg-card rounded-2xl p-5 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group relative flex flex-col h-full"
+                                    className="group relative flex h-full flex-col overflow-hidden border border-stone-200 bg-white shadow-[0_8px_26px_rgba(28,25,23,0.06)] transition-all duration-500 md:hover:-translate-y-1.5 md:hover:border-primary/20 md:hover:shadow-[0_18px_42px_rgba(28,25,23,0.12)]"
                                 >
                                     {product.tag && (
-                                        <div className="absolute top-7 left-7 z-10 bg-primary text-primary-foreground text-[11px] font-bold px-3 py-1 rounded-sm uppercase tracking-wider shadow-md">
+                                        <span className="absolute left-4 top-4 z-10 rounded-full bg-primary px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground shadow-md">
                                             {product.tag}
-                                        </div>
+                                        </span>
                                     )}
 
-                                    <div
-                                        className="aspect-square sm:aspect-4/3 rounded-xl overflow-hidden mb-6 bg-stone-100 cursor-pointer relative"
+                                    <button
+                                        type="button"
+                                        className="relative aspect-4/3 cursor-zoom-in overflow-hidden bg-[#f4f1ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
                                         onClick={() => setLightbox({ image: product.image, title: product.name })}
                                         title="Clique para ampliar a imagem"
+                                        aria-label={`Ampliar foto do ${product.name}`}
                                     >
                                         <img
                                             src={product.image}
                                             alt={product.name}
-                                            className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+                                            className="h-full w-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-[1.05]"
                                             loading="lazy"
+                                            decoding="async"
                                         />
-                                        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                                            <ZoomIn className="w-10 h-10 text-white drop-shadow-md" />
-                                        </div>
-                                    </div>
+                                        <span className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-stone-800 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                                            <Maximize2 className="h-4 w-4" />
+                                        </span>
+                                    </button>
 
-                                    <div className="flex flex-col flex-1">
-                                        <div className="mb-6">
-                                            <p className="text-primary text-xs font-semibold uppercase tracking-wider mb-2">
-                                                {product.category}
-                                            </p>
-                                            <h3 className="text-lg font-bold text-foreground leading-tight">
+                                    <div className="flex flex-1 flex-col p-6">
+                                        <div className="mb-6 flex-1">
+                                            <div className="mb-3 flex items-center justify-between gap-3">
+                                                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-primary">
+                                                    {product.category}
+                                                </p>
+                                                <span className="text-[10px] font-semibold tracking-[0.16em] text-stone-400">
+                                                    {String(index + 1).padStart(2, '0')}
+                                                </span>
+                                            </div>
+                                            <h3 className="font-serif text-xl font-medium leading-tight tracking-[-0.01em] text-foreground lg:text-2xl">
                                                 {product.name}
                                             </h3>
                                         </div>
 
                                         <Button
                                             onClick={() => handleWhatsAppClick(product.name)}
-                                            className="w-full mt-auto bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/20 rounded-xl h-12 transition-all duration-300 font-semibold tracking-wide cursor-pointer flex items-center justify-center gap-2 group/btn"
+                                            className="group/btn mt-auto h-12 w-full rounded-sm bg-stone-900 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:cursor-pointer hover:bg-primary hover:shadow-md no-default-hover-elevate no-default-active-elevate"
                                         >
-                                            <FaWhatsapp className="w-5 h-5 text-[#25D366] transition-colors" />
-                                            Chamar no WhatsApp
+                                            <FaWhatsapp className="h-5 w-5 text-[#25D366] transition-colors duration-300 group-hover/btn:text-white" />
+                                            <span>Solicitar atendimento</span>
                                         </Button>
                                     </div>
-                                </div>
+
+                                    <span
+                                        aria-hidden="true"
+                                        className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-primary transition-transform duration-500 md:group-hover:scale-x-100"
+                                    />
+                                </article>
                             ))}
                         </div>
                     )}
@@ -210,6 +238,8 @@ export default function Loja() {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
+                            type="button"
+                            aria-label="Fechar visualização da imagem"
                             className="absolute -top-12 right-0 text-white hover:text-primary transition-colors cursor-pointer"
                             onClick={() => setLightbox(null)}
                         >

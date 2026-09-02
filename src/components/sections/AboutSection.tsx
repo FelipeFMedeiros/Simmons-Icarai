@@ -30,7 +30,7 @@ export function AboutSection() {
   const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
 
   return (
-    <section className="w-full py-24 bg-background">
+    <section className="w-full overflow-x-clip py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           

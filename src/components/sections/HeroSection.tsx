@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import type { EmblaCarouselType } from 'embla-carousel';
@@ -8,8 +8,6 @@ const PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
 
 const WHATSAPP_URL =
     'https://api.whatsapp.com/send/?phone=5521977030033&text=Ol%C3%A1%2C+vi+seu+site%21+Quero+saber+mais+sobre+a+Simmons.&type=phone_number&app_absent=0';
-
-const autoplayPlugin = Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true });
 
 // Desktop images
 import hero from '@/assets/HeroSection/hero.webp';
@@ -40,13 +38,16 @@ const slides = [
 ];
 
 export function HeroSection() {
+    const heroRef = useRef<HTMLElement>(null);
+    const [autoplayPlugin] = useState(() =>
+        Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true }),
+    );
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { loop: true, align: 'start' },
         [autoplayPlugin],
     );
 
     const [current, setCurrent] = useState(0);
-    const [count, setCount] = useState(0);
     // Pre-seed slide 0 so the hero image loads immediately without a placeholder flash
     const [loaded, setLoaded] = useState<number[]>([0]);
 
@@ -61,21 +62,54 @@ export function HeroSection() {
     useEffect(() => {
         if (!emblaApi) return;
 
-        setCount(emblaApi.scrollSnapList().length);
-        setCurrent(emblaApi.selectedScrollSnap());
+        const onSelect = () => setCurrent(emblaApi.selectedScrollSnap());
 
-        emblaApi.on('select', () => setCurrent(emblaApi.selectedScrollSnap()));
+        onSelect();
         updateLoaded(emblaApi);
+        emblaApi.on('select', onSelect);
         emblaApi.on('slidesInView', updateLoaded);
         emblaApi.on('reInit', updateLoaded);
+
+        return () => {
+            emblaApi.off('select', onSelect);
+            emblaApi.off('slidesInView', updateLoaded);
+            emblaApi.off('reInit', updateLoaded);
+        };
     }, [emblaApi, updateLoaded]);
 
-    const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
-    const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-    const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+    useEffect(() => {
+        const heroNode = heroRef.current;
+        if (!emblaApi || !heroNode) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) autoplayPlugin.play();
+                else autoplayPlugin.stop();
+            },
+            { threshold: 0.1 },
+        );
+
+        observer.observe(heroNode);
+        return () => observer.disconnect();
+    }, [autoplayPlugin, emblaApi]);
+
+    const scrollTo = useCallback((index: number) => {
+        emblaApi?.scrollTo(index);
+        autoplayPlugin.reset();
+    }, [autoplayPlugin, emblaApi]);
+
+    const scrollPrev = useCallback(() => {
+        emblaApi?.scrollPrev();
+        autoplayPlugin.reset();
+    }, [autoplayPlugin, emblaApi]);
+
+    const scrollNext = useCallback(() => {
+        emblaApi?.scrollNext();
+        autoplayPlugin.reset();
+    }, [autoplayPlugin, emblaApi]);
 
     return (
-        <section className="w-full bg-background md:pt-4 md:pb-8 md:px-6 lg:px-8">
+        <section ref={heroRef} className="w-full bg-background md:pt-4 md:pb-8 md:px-6 lg:px-8">
             <div className="relative w-full max-w-[1920px] mx-auto aspect-941/1672 md:aspect-1920/555 md:rounded-4xl overflow-hidden md:shadow-2xl">
                 <div ref={emblaRef} className="w-full h-full overflow-hidden">
                     <div className="flex h-full" style={{ touchAction: 'pan-y pinch-zoom' }}>
@@ -85,7 +119,6 @@ export function HeroSection() {
                                 <div
                                     key={index}
                                     className="flex-[0_0_100%] min-w-0 h-full"
-                                    style={{ transform: 'translate3d(0,0,0)' }}
                                 >
                                     <a
                                         href={WHATSAPP_URL}
@@ -95,24 +128,19 @@ export function HeroSection() {
                                         tabIndex={current === index ? 0 : -1}
                                         aria-hidden={current !== index}
                                     >
-                                        {/* Mobile image */}
-                                        <img
-                                            src={isLoaded ? mobile : PLACEHOLDER}
-                                            alt={`Slide ${index + 1}`}
-                                            className="block md:hidden w-full h-full object-cover object-center"
-                                            loading={index === 0 ? 'eager' : undefined}
-                                            fetchPriority={index === 0 ? 'high' : 'auto'}
-                                            decoding={index === 0 ? 'sync' : 'async'}
-                                        />
-                                        {/* Desktop image */}
-                                        <img
-                                            src={isLoaded ? desktop : PLACEHOLDER}
-                                            alt={`Slide ${index + 1}`}
-                                            className="hidden md:block w-full h-full object-cover object-center"
-                                            loading={index === 0 ? 'eager' : undefined}
-                                            fetchPriority={index === 0 ? 'high' : 'auto'}
-                                            decoding={index === 0 ? 'sync' : 'async'}
-                                        />
+                                        <picture className="block w-full h-full">
+                                            {isLoaded && (
+                                                <source media="(min-width: 768px)" srcSet={desktop} />
+                                            )}
+                                            <img
+                                                src={isLoaded ? mobile : PLACEHOLDER}
+                                                alt={`Slide ${index + 1}`}
+                                                className="block w-full h-full object-cover object-center"
+                                                loading={index === 0 ? 'eager' : 'lazy'}
+                                                fetchPriority={index === 0 ? 'high' : 'auto'}
+                                                decoding="async"
+                                            />
+                                        </picture>
                                     </a>
                                 </div>
                             );
@@ -152,7 +180,7 @@ export function HeroSection() {
 
                 {/* Dot indicators */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    {Array.from({ length: count }).map((_, index) => (
+                    {slides.map((_, index) => (
                         <button
                             key={index}
                             type="button"
