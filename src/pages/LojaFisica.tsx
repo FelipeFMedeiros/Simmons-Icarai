@@ -209,7 +209,7 @@ export default function LojaFisica() {
                             <div className="flex flex-col gap-6">
 
                                 {/* Hours */}
-                                <div className="p-6 rounded-2xl bg-white border border-border shadow-sm">
+                                <div className="scroll-mt-24 p-6 rounded-2xl bg-white border border-border shadow-sm" id="horario-funcionamento">
                                     <div className="flex items-center gap-3 mb-5">
                                         <div className="shrink-0 w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
                                             <Clock className="w-5 h-5 text-primary" strokeWidth={1.5} />

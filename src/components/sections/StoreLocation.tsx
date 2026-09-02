@@ -75,10 +75,6 @@ export function StoreLocation() {
                       <FaWhatsapp className="w-4 h-4" />
                       (21) 97703-0033
                     </a>
-                    <a href="tel:+5521985556378" className="hover:text-primary transition-colors inline-flex items-center gap-2">
-                      <Phone className="w-4 h-4" />
-                      (21) 98555-6378
-                    </a>
                   </p>
                 </div>
               </div>

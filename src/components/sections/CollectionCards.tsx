@@ -1,29 +1,23 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import imageBothanical from '@/assets/CollectionCards/bothanical.webp';
-import imageBothanicalMobile from '@/assets/CollectionCards/bothanical-mobile.webp';
 import imageHeritage from '@/assets/CollectionCards/heritage.webp';
-import imageHeritageMobile from '@/assets/CollectionCards/heritage-mobile.webp';
 import imageMadison from '@/assets/CollectionCards/madison.webp';
-import imageMadisonMobile from '@/assets/CollectionCards/madison-mobile.webp';
 import { Link } from 'wouter';
 
 const collections = [
     {
         image: imageBothanical,
-        mobileImage: imageBothanicalMobile,
         title: 'Bothanical',
         desc: 'Design sofisticado e suporte excepcional para seu sono profundo.',
     },
     {
         image: imageHeritage,
-        mobileImage: imageHeritageMobile,
         title: 'Heritage',
         desc: 'Tecnologia sustentável que oferece frescor e bem-estar todas as noites.',
     },
     {
         image: imageMadison,
-        mobileImage: imageMadisonMobile,
         title: 'Madison',
         desc: 'Conforto de hotel 5 estrelas para transformar seu descanso.',
     },
@@ -56,7 +50,7 @@ export function CollectionCards() {
                                     Coleção {String(index + 1).padStart(2, '0')}
                                 </span>
                                 <picture className="block h-full w-full">
-                                    <source media="(max-width: 767px)" srcSet={item.mobileImage} />
+                                    <source media="(max-width: 767px)" srcSet={item.image} />
                                     <img
                                         src={item.image}
                                         alt={item.title}
@@ -69,7 +63,7 @@ export function CollectionCards() {
                                 </picture>
                                 <div
                                     aria-hidden="true"
-                                    className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent opacity-60 transition-opacity duration-500 md:group-hover:opacity-100"
+                                    className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/20 to-transparent opacity-60 transition-opacity duration-500 md:group-hover:opacity-100"
                                 />
                             </div>
                             <div className="flex grow flex-col p-6 lg:p-7">

@@ -121,17 +121,17 @@ export function Footer() {
                             </li>
 
                             <li>
-                                <Link
-                                    href="/loja-fisica"
+                                <a
+                                    href="https://www.google.com/maps/search/Rua+Dr.+Tavares+de+Macedo,+71+-+Icara%C3%AD,+Niter%C3%B3i"
                                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                                 >
                                     Como chegar
-                                </Link>
+                                </a>
                             </li>
 
                             <li>
                                 <Link
-                                    href="/loja-fisica"
+                                    href="/loja-fisica#horario-funcionamento"
                                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                                 >
                                     Horário de atendimento

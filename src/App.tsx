@@ -18,15 +18,39 @@ import Loja from './pages/Loja';
 
 const queryClient = new QueryClient();
 
-function ScrollToTop() {
-  const [location] = useLocation();
-
+function ScrollToLocation() {
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, [location]);
+    const scrollToLocation = () => {
+      window.requestAnimationFrame(() => {
+        const hash = window.location.hash.slice(1);
+
+        if (hash) {
+          const target = document.getElementById(decodeURIComponent(hash));
+
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+          }
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    };
+
+    scrollToLocation();
+
+    window.addEventListener('hashchange', scrollToLocation);
+    window.addEventListener('popstate', scrollToLocation);
+    window.addEventListener('pushState', scrollToLocation);
+    window.addEventListener('replaceState', scrollToLocation);
+
+    return () => {
+      window.removeEventListener('hashchange', scrollToLocation);
+      window.removeEventListener('popstate', scrollToLocation);
+      window.removeEventListener('pushState', scrollToLocation);
+      window.removeEventListener('replaceState', scrollToLocation);
+    };
+  }, []);
 
   return null;
 }
@@ -34,7 +58,7 @@ function ScrollToTop() {
 function Router() {
   return (
     <RoutedErrorBoundary>
-      <ScrollToTop />
+      <ScrollToLocation />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/termos-de-uso" component={TermosDeUso} />
