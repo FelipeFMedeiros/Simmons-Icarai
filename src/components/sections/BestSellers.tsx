@@ -10,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import imgMadison from '@/assets/best-madison.jpg';
-import imgHeritage from '@/assets/best-heritage.jpg';
-import imgBamboo from '@/assets/best-bamboo.jpg';
-import imgBrook from '@/assets/best-brook.jpg';
+import Colchao1 from '@/assets/Colchoes/colchao_simmons_madison_queen.jpg';
+import Colchao2 from '@/assets/Colchoes/colchao_simmons_heritage.jpg';
+import Colchao4 from '@/assets/Colchoes/co_b_bothanic_essence.jpg';
+import Bau1 from '@/assets/Colchoes/box-bau-simmons-brook-cinza-box-bau-brook-cinza-ambientada.jpg';
 
 const WHATSAPP_PHONE = '552156222228';
 
@@ -31,28 +31,28 @@ const products: Product[] = [
     name: 'Colchão Simmons Madison',
     tag: 'Top 1',
     description: 'Molejo ensacado individual com pillow top acolchoado.',
-    image: imgMadison,
+    image: Colchao1,
   },
   {
     id: 2,
     name: 'Colchão Simmons Heritage',
     tag: '12% OFF',
     description: 'Firmeza equilibrada e acabamento em tecido damasco.',
-    image: imgHeritage,
+    image: Colchao2,
   },
   {
     id: 3,
     name: 'Colchão Simmons Bamboo Bothanical Essence',
     tag: 'Conforto',
     description: 'Fibra de bambu naturalmente fresca e respirável.',
-    image: imgBamboo,
+    image: Colchao4,
   },
   {
     id: 4,
     name: 'Box Baú Simmons Brook',
     tag: '17% OFF',
     description: 'Base com amplo compartimento interno de armazenamento.',
-    image: imgBrook,
+    image: Bau1,
   },
 ];
 
@@ -124,7 +124,7 @@ export function BestSellers() {
               </button>
 
               <div className="flex grow flex-col p-6">
-                <h3 className="line-clamp-2 min-h-[3.25rem] font-serif text-xl font-medium leading-tight tracking-[-0.01em] text-stone-900">
+                <h3 className="line-clamp-2 min-h-13 font-serif text-xl font-medium leading-tight tracking-[-0.01em] text-stone-900">
                   {product.name}
                 </h3>
                 <p className="mt-3 grow text-sm leading-relaxed text-muted-foreground">
