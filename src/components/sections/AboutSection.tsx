@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 
 import imgBlack1 from '@/assets/AboutSection/linha_black-1.webp';
 import imgBlack2 from '@/assets/AboutSection/linha_black-2.webp';
-import imgDetalhes2 from '@/assets/AboutSection/detalhes-2.jpg';
-import imgDetalhes3 from '@/assets/AboutSection/detalhes-3.jpg';
+import imgDetalhes2 from '@/assets/AboutSection/detalhes-1.webp';
+import imgDetalhes3 from '@/assets/AboutSection/detalhes-3.webp';
 
 const aboutImages = [imgBlack1, imgBlack2, imgDetalhes2, imgDetalhes3];
 

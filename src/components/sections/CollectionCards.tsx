@@ -49,18 +49,20 @@ export function CollectionCards() {
                                 <span className="absolute left-4 top-4 z-10 bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-primary shadow-sm backdrop-blur-sm">
                                     Coleção {String(index + 1).padStart(2, '0')}
                                 </span>
-                                <picture className="block h-full w-full">
-                                    <source media="(max-width: 767px)" srcSet={item.image} />
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        width={768}
-                                        height={576}
-                                        loading="lazy"
-                                        decoding="async"
-                                        className="h-full w-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-[1.045]"
-                                    />
-                                </picture>
+                                <a href="/loja" className="absolute inset-0 z-10">
+                                    <picture className="block h-full w-full">
+                                        <source media="(max-width: 767px)" srcSet={item.image} />
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                            width={768}
+                                            height={576}
+                                            loading="lazy"
+                                            decoding="async"
+                                            className="h-full w-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-[1.045]"
+                                        />
+                                    </picture>
+                                </a>
                                 <div
                                     aria-hidden="true"
                                     className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/20 to-transparent opacity-60 transition-opacity duration-500 md:group-hover:opacity-100"
@@ -69,9 +71,14 @@ export function CollectionCards() {
                             <div className="flex grow flex-col p-6 lg:p-7">
                                 <div className="mb-4 flex items-center gap-3">
                                     <h3 className="text-2xl font-serif leading-none text-foreground">{item.title}</h3>
-                                    <span className="h-px grow bg-stone-200 transition-colors duration-500 md:group-hover:bg-primary/35" aria-hidden="true" />
+                                    <span
+                                        className="h-px grow bg-stone-200 transition-colors duration-500 md:group-hover:bg-primary/35"
+                                        aria-hidden="true"
+                                    />
                                 </div>
-                                <p className="grow text-sm leading-relaxed text-muted-foreground lg:text-base">{item.desc}</p>
+                                <p className="grow text-sm leading-relaxed text-muted-foreground lg:text-base">
+                                    {item.desc}
+                                </p>
                                 <Link
                                     href="/loja"
                                     aria-label={`Conhecer a coleção ${item.title}`}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'wouter';
+import React, { useState } from 'react';
+import { Link, useSearchParams } from 'wouter';
 import { ChevronRight, Home, Maximize2, X } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
@@ -29,36 +29,44 @@ const allProducts: Product[] = [
 const filterOptions = [
     { label: 'Todos', value: 'todos' },
     { label: 'Colchões', value: 'colchoes' },
-    { label: 'Bases e Baús', value: 'bases' },
+    { label: 'Cama Box + Colchão', value: 'cama-box-colchao' },
+    { label: 'Baús', value: 'baus' },
     { label: 'Travesseiros', value: 'travesseiros' },
-    { label: 'Protetores', value: 'protetores' },
-    { label: 'Outros Acessórios', value: 'outros' },
+    { label: 'Roupa de Cama', value: 'roupa-de-cama' },
+    { label: 'Protetores de Colchão', value: 'protetores' },
+    { label: 'Acessórios', value: 'acessorios' },
 ];
 
 export default function Loja() {
-    const [selectedFilter, setSelectedFilter] = useState<string>('todos');
+    const [searchParams, setSearchParams] = useSearchParams();
     const [lightbox, setLightbox] = useState<{ image: string; title: string } | null>(null);
+    const categoryParam = searchParams.get('categoria');
+    const requestedFilter = categoryParam === 'colhoes' ? 'colchoes' : categoryParam;
+    const selectedFilter = filterOptions.find((option) => option.value === requestedFilter)?.value ?? 'todos';
 
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const cat = params.get('categoria');
-        if (cat) {
-            setSelectedFilter(cat);
-        }
-    }, []);
+    const selectFilter = (filter: string) => {
+        if (filter === selectedFilter && (filter !== 'todos' || !categoryParam)) return;
+
+        setSearchParams((current) => {
+            const next = new URLSearchParams(current);
+            if (filter === 'todos') {
+                next.delete('categoria');
+            } else {
+                next.set('categoria', filter);
+            }
+            return next;
+        });
+    };
 
     const filteredProducts = allProducts.filter((product) => {
         if (selectedFilter === 'todos') return true;
-        if (selectedFilter === 'colchoes') return product.type === 'mattress' && product.category !== 'Box Bau';
-        if (selectedFilter === 'bases') return product.category === 'Box Bau';
+        if (selectedFilter === 'colchoes') return product.category === 'Colchões';
+        if (selectedFilter === 'cama-box-colchao') return product.category === 'Cama Box + Colchão';
+        if (selectedFilter === 'baus') return product.category === 'Baús';
         if (selectedFilter === 'travesseiros') return product.category === 'Travesseiros';
-        if (selectedFilter === 'protetores') return product.category === 'Protetor de Colchão';
-        if (selectedFilter === 'outros')
-            return (
-                product.type === 'accessory' &&
-                product.category !== 'Travesseiros' &&
-                product.category !== 'Protetor de Colchão'
-            );
+        if (selectedFilter === 'roupa-de-cama') return product.category === 'Roupa de Cama';
+        if (selectedFilter === 'protetores') return product.category === 'Roupa de Cama' && product.name.startsWith('Protetor de Colchão');
+        if (selectedFilter === 'acessorios') return product.category === 'Acessórios';
         return true;
     });
 
@@ -124,7 +132,7 @@ export default function Loja() {
                         {filterOptions.map((option) => (
                             <button
                                 key={option.value}
-                                onClick={() => setSelectedFilter(option.value)}
+                                onClick={() => selectFilter(option.value)}
                                 aria-pressed={selectedFilter === option.value}
                                 className={cn(
                                     'shrink-0 cursor-pointer rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-300',

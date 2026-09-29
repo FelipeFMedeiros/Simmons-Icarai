@@ -6,10 +6,12 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 import imgStore from '@/assets/AboutSection/fachada.webp';
-import imgInterior from '@/assets/AboutSection/interior_loja.webp';
+import imgInterior1 from '@/assets/AboutSection/interior-1.webp';
+import imgInterior2 from '@/assets/AboutSection/interior-2.webp';
 
 const interiorImages = [
-  imgInterior
+  imgInterior1,
+  imgInterior2
 ];
 
 export function StoreLocation() {

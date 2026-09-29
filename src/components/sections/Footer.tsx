@@ -86,6 +86,24 @@ export function Footer() {
 
                             <li>
                                 <Link
+                                    href="/loja?categoria=cama-box-colchao"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Cama Box + Colchão
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja?categoria=baus"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Baús
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
                                     href="/loja?categoria=travesseiros"
                                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                                 >
@@ -95,10 +113,28 @@ export function Footer() {
 
                             <li>
                                 <Link
+                                    href="/loja?categoria=roupa-de-cama"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Roupa de cama
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
                                     href="/loja?categoria=protetores"
                                     className="text-sm text-muted-foreground transition-colors hover:text-primary"
                                 >
                                     Protetores de colchão
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href="/loja?categoria=acessorios"
+                                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                                >
+                                    Acessórios
                                 </Link>
                             </li>
                         </ul>
