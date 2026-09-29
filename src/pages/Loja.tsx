@@ -27,14 +27,14 @@ const allProducts: Product[] = [
 ];
 
 const filterOptions = [
-    { label: 'Todos', value: 'todos' },
-    { label: 'Colchões', value: 'colchoes' },
-    { label: 'Cama Box + Colchão', value: 'cama-box-colchao' },
-    { label: 'Baús', value: 'baus' },
-    { label: 'Travesseiros', value: 'travesseiros' },
-    { label: 'Roupa de Cama', value: 'roupa-de-cama' },
-    { label: 'Protetores de Colchão', value: 'protetores' },
-    { label: 'Acessórios', value: 'acessorios' },
+    { label: 'Todos', value: 'todos', description: 'Conheça colchões, camas box e acessórios Simmons disponíveis para atendimento em nossa loja de Icaraí.' },
+    { label: 'Colchões', value: 'colchoes', description: 'Explore os colchões Simmons e encontre o nível de conforto ideal com a ajuda da nossa equipe em Icaraí.' },
+    { label: 'Cama Box + Colchão', value: 'cama-box-colchao', description: 'Conheça conjuntos de cama box e colchão Simmons para completar seu espaço de descanso.' },
+    { label: 'Baús', value: 'baus', description: 'Veja as opções de box baú Simmons que unem suporte para o colchão e espaço para organização.' },
+    { label: 'Travesseiros', value: 'travesseiros', description: 'Encontre travesseiros e capas protetoras Simmons para complementar suas noites de sono.' },
+    { label: 'Roupa de Cama', value: 'roupa-de-cama', description: 'Descubra lençóis, capas duvet, peseiras e protetores de colchão da linha Simmons.' },
+    { label: 'Protetores de Colchão', value: 'protetores', description: 'Confira os protetores de colchão Simmons para ajudar a preservar seu colchão.' },
+    { label: 'Acessórios', value: 'acessorios', description: 'Conheça capas pillow e outros acessórios Simmons para completar sua cama.' },
 ];
 
 export default function Loja() {
@@ -43,6 +43,7 @@ export default function Loja() {
     const categoryParam = searchParams.get('categoria');
     const requestedFilter = categoryParam === 'colhoes' ? 'colchoes' : categoryParam;
     const selectedFilter = filterOptions.find((option) => option.value === requestedFilter)?.value ?? 'todos';
+    const selectedOption = filterOptions.find((option) => option.value === selectedFilter)!;
 
     const selectFilter = (filter: string) => {
         if (filter === selectedFilter && (filter !== 'todos' || !categoryParam)) return;
@@ -118,9 +119,12 @@ export default function Loja() {
                         Catálogo Completo
                     </span>
                     <h1 className="text-4xl md:text-5xl font-serif text-white tracking-wide mb-6 drop-shadow-lg">
-                        Nossos Produtos
+                        {selectedFilter === 'todos' ? 'Nossos Produtos' : selectedOption.label}
                     </h1>
-                    <div className="w-16 h-px bg-primary mx-auto" />
+                    <p className="max-w-2xl text-sm md:text-base text-white/90 leading-relaxed">
+                        {selectedOption.description}
+                    </p>
+                    <div className="w-16 h-px bg-primary mx-auto mt-6" />
                 </div>
             </section>
 

@@ -20,6 +20,14 @@ export default function Home() {
             <main className="grow">
                 <div id="inicio">
                     <HeroSection />
+                    <div className="container mx-auto px-6 py-8 text-center">
+                        <h1 className="font-serif text-3xl md:text-4xl text-foreground">
+                            Colchões Simmons em Icaraí, Niterói
+                        </h1>
+                        <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+                            Conheça colchões, camas box e acessórios para transformar suas noites de sono. Visite nossa loja em Icaraí e encontre o conforto ideal com atendimento especializado.
+                        </p>
+                    </div>
                     <FeaturesBanner />
                 </div>
                 <div id="colchoes">

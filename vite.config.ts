@@ -21,6 +21,7 @@ export default defineConfig({
     },
     build: {
         outDir: 'dist',
+        manifest: true,
         minify: 'esbuild',
         cssMinify: true,
         rollupOptions: {

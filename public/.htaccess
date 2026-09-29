@@ -1,8 +1,35 @@
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteRule ^index\.html$ - [L]
+
+  RewriteRule ^(loja|loja-fisica|politica-de-privacidade|termos-de-uso)/$ /$1 [R=301,L]
+
+  # Serve the pre-rendered HTML for each catalog filter without changing its URL.
+  RewriteCond %{QUERY_STRING} (^|&)categoria=colchoes(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-colchoes.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=colhoes(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-colchoes.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=cama-box-colchao(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-cama-box-colchao.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=baus(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-baus.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=travesseiros(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-travesseiros.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=roupa-de-cama(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-roupa-de-cama.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=protetores(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-protetores.html [L]
+  RewriteCond %{QUERY_STRING} (^|&)categoria=acessorios(&|$) [NC]
+  RewriteRule ^loja/?$ _prerender/loja-acessorios.html [L]
+
+  RewriteRule ^loja/?$ _prerender/loja.html [L]
+  RewriteRule ^loja-fisica/?$ _prerender/loja-fisica.html [L]
+  RewriteRule ^politica-de-privacidade/?$ _prerender/politica-de-privacidade.html [L]
+  RewriteRule ^termos-de-uso/?$ _prerender/termos-de-uso.html [L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule ^ - [R=404,L]
 </IfModule>

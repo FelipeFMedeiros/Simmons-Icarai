@@ -1,6 +1,3 @@
 User-agent: *
 Allow: /
-Allow: /loja-fisica
-Allow: /loja
-Allow: /politica-de-privacidade
-Allow: /termos-de-uso
+Sitemap: https://simmonsicarai.com.br/sitemap.xml
